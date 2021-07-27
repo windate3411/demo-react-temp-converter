@@ -15,15 +15,16 @@ body {
 }
 
 .container {
-  height: 200px;
+  height: 250px;
   width: 500px;
   background: #fff;
-  border-radius: 16px;
+  border-radius: 8px;
   margin: 0 auto;
-  padding: 16px 0;
+  padding: 24px 0;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 .container > div {
@@ -54,14 +55,12 @@ button {
 
 select {
   appearance: none;
-
-  background-image: linear-gradient(45deg, transparent 50%, gray 50%),
-    linear-gradient(135deg, gray 50%, transparent 50%),
-    linear-gradient(to right, #ccc, #ccc);
-  background-position: calc(100% - 20px) calc(1em + 2px),
-    calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
-  background-size: 5px 5px, 5px 5px, 1px 1.5em;
-  background-repeat: no-repeat;
+  padding-right: 4px;
+  background: transparent
+    url('http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png')
+    no-repeat;
+  background-position: center right 10%;
+  cursor: pointer;
 }
 
 input,
@@ -99,10 +98,11 @@ select {
 .result {
   height: 48px;
   font-weight: 600;
+  font-size: 20px;
 }
 
 .label {
-  font-size: 14px;
+  font-size: 16px;
   color: #bebebe;
   margin-bottom: 4px;
 }

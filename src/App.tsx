@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+
 import { convertDegree } from './utils'
 import './App.css'
 
@@ -13,10 +14,20 @@ function App() {
   }
 
   const onDegreeInputBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    if (!Number(value) && value !== '0') {
-      return setErrorMessage('Please input a valid number')
-    }
-    return setErrorMessage('')
+    setErrorMessage(
+      `${isInputValid(e.target.value) ? '' : 'Please input a valid number'}`
+    )
+  }
+
+  const isInputValid = (value: string) => {
+    return Number(value) && value !== ''
+  }
+
+  const onDegreeChange = (e: React.FocusEvent<HTMLInputElement>) => {
+    setValue(e.target.value)
+    setErrorMessage(
+      `${isInputValid(e.target.value) ? '' : 'Please input a valid number'}`
+    )
   }
 
   return (
@@ -27,8 +38,9 @@ function App() {
             <div className="label">Degrees</div>
             <input
               type="text"
-              onChange={(e) => setValue(e.target.value)}
+              onChange={onDegreeChange}
               onBlur={onDegreeInputBlur}
+              onFocus={() => setResult('')}
             />
           </div>
           <div className="input-box type">
@@ -43,9 +55,9 @@ function App() {
             </select>
           </div>
           <button
-            className={`convert-btn ${!!errorMessage ? 'disabled' : ''}`}
+            className={`convert-btn ${!isInputValid(value) ? 'disabled' : ''}`}
             onClick={onClick}
-            disabled={!!errorMessage}
+            disabled={!isInputValid(value)}
           >
             Convert
           </button>
